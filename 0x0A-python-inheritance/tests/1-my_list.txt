@@ -1,49 +1,49 @@
-Prints the list, but sorted in ascending sort
-=============================================
-the class inherits from list
+The ```My List``` module
+========================
 
-assumes all given values are of type int
 
-    >>> MyList = __import__('1-my_list').MyList
+Using ```MyList```
+------------------
 
-    basic list
+Import the class ```MyList``` from the ```My List``` module
+       >>> MyList = __import__('1-my_list').MyList
 
-    >>> my_list = MyList([1, 4, 2, 3, 5])
-    >>> my_list.print_sorted()
-    [1, 2, 3, 4, 5]
+Now use it:
+-----------
 
-    empty list
+	>>> my_list = MyList()
+	>>> my_list.append(1)
+	>>> my_list.append(3)
+	>>> my_list.append(5)
+	>>> my_list.append(4)
+	>>> my_list.append(2)
+	>>> print(my_list)
+	[1, 3, 5, 4, 2]
 
-    >>> my_list = MyList([])
-    >>> my_list.print_sorted()
-    []
+	>>> my_list.print_sorted()
+	[1, 2, 3, 4, 5]
 
-    list with one element
+	>>> len(my_list)
+	5
 
-    >>> my_list = MyList([9])
-    >>> my_list.print_sorted()
-    [9]
+	>>> my_list + [4, 5, 6]
+	[1, 3, 5, 4, 2, 4, 5, 6]
 
-    first element larger
+	>>> my_list = MyList()
+	>>> my_list.append("Hi")
+	>>> my_list *= 4
+	>>> print(my_list)
+	['Hi', 'Hi', 'Hi', 'Hi']
 
-    >>> my_list = MyList([9, 4, 2, 3, 5])
-    >>> my_list.print_sorted()
-    [2, 3, 4, 5, 9]
+	>>> my_list = MyList()
+	>>> my_list.append(1)
+	>>> my_list.append(2)
+	>>> my_list.append(3)
+	>>> print(3 in my_list)
+	True
 
-    Non-integer elements
+	>>> print([x for x in my_list])
+	[1, 2, 3]
 
-    >>> my_list = MyList(['one', 'three', 'two'])
-    >>> my_list.print_sorted()
-    ['one', 'three', 'two']
-
-    No arguments supplied
-
-    >>> my_list = MyList()
-    >>> my_list.print_sorted()
-    []
-
-    list has a string
-
-    >>> MyList.print_sorted([1, 4, 2, 3, "5"])
-    Traceback (most recent call last):
-    TypeError: '<' not supported between instances of 'str' and 'int'
+	>>> print(my_list[-1:])
+	[3]
