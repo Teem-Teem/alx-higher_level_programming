@@ -1,16 +1,12 @@
 #!/usr/bin/python3
-"""Function add_attribute
-"""
+"""Module for add_attribute method"""
 
 
-def add_attribute(a_class, name, value):
-    """Adds new attribute to an object if it's possible
-    """
+def add_attribute(obj, name, value):
+    """Method for checking and adding new attribute"""
 
-    # Set for O(1) membership test
-    cannot_add = {int, str, float, list, dict, tuple, frozenset, type, object}
-
-    if type(a_class) in cannot_add:
+    if hasattr(obj, "__dict__") or \
+       (hasattr(obj, "__slots__") and name in obj.__slots__):
+        setattr(obj, name, value)
+    else:
         raise TypeError("can't add new attribute")
-
-    a_class.__setattr__(name, value)
