@@ -1,5 +1,4 @@
 #!/usr/bin/node
-// class Rectangle that defines a rectangle
 
 class Rectangle {
   constructor (w, h) {
@@ -10,21 +9,15 @@ class Rectangle {
   }
 
   print () {
-    let i, j, string;
-    for (i = 0; i < this.height; i++) {
-      string = '';
-      for (j = 0; j < this.width; j++) {
-	string += 'X';
-      }
-      console.log(string);
+    for (let i = 0; i < this.height; i++) {
+      console.log('X'.repeat(this.width));
     }
   }
 
   rotate () {
-    let temp;
-    temp = this.height;
+    const tmp = this.height;
     this.height = this.width;
-    this.width = temp;
+    this.width = tmp;
   }
 
   double () {
