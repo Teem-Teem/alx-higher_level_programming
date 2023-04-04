@@ -21,4 +21,3 @@ Usage: ./8-json_api.py <letter>
                 print("[{}] {}".format(response.get("id"), response.get("name")))
         except ValueError:
             print("Not a valid JSON")
-
