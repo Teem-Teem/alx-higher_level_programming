@@ -1,5 +1,7 @@
 #!/usr/bin/node
+
 const x = parseInt(process.argv[2]);
+
 function findFactorial (x) {
   if (!x) { return 1; }
 
