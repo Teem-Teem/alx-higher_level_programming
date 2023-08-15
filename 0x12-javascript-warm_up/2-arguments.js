@@ -2,5 +2,10 @@
 
 // a script that prints boolean of each time the arguments found
 
-const argumentsPassed = process.argv.length;
-console.log(argumentsPassed === 2 ? 'No argument' : argumentsPassed === 3 ? 'Argument found' : 'Arguments found');
+if (process.argv.length < 3) {
+	  console.log('No argument');
+} else if (process.argv.length === 3) {
+	  console.log('Argument found');
+} else {
+	  console.log('Arguments found');
+}
