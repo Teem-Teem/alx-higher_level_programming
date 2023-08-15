@@ -1,12 +1,6 @@
 #!/usr/bin/node
-
-const x = parseInt(process.argv[2]);
-
-function findFactorial (x) {
-  if (!x) { return 1; }
-
-  if (x <= 0) { return; }
-  return findFactorial(x - 1) * x;
+function factorial (n) {
+  return n === 0 || isNaN(n) ? 1 : n * factorial(n - 1);
 }
 
-console.log(findfactorial(x));
+console.log(factorial(Number(process.argv[2])));
