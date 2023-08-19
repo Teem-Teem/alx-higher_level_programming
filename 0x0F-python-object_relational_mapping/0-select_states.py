@@ -16,7 +16,9 @@ if __name__ == '__main__':
 
     cursor = databse.cursor()
 
-    cursor.execute('SELECT id, name FROM states ORDER BY states.id ASC')
+    cursor.execute("SELECT * FROM states")
+    row = cursor.fetchall()
 
-    for row in cursor.fetchall():
+    for row in rows:
         print(row)
+
