@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     from sys import argv
     from sqlalchemy import create_engine
@@ -11,7 +11,7 @@ if __name__ == '__main__':
     password = '{}'.format(argv[2])
     db_name = '{}'.format(argv[3])
 
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
                            .format(username, password, db_name))
 
     Session = sessionmaker(bind=engine)
