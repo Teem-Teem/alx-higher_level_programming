@@ -7,16 +7,12 @@ if __name__ == "__main__":
     from sqlalchemy.orm.session import sessionmaker, Session
     from model_state import Base, State
 
-    username = '{}'.format(argv[1])
-    password = '{}'.format(argv[2])
-    db_name = '{}'.format(argv[3])
-
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
-                           .format(username, password, db_name))
-
+    db_uri = 'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        argv[1], argv[2], argv[3])
+    engine = create_engine(db_uri)
     Session = sessionmaker(bind=engine)
+
     session = Session()
 
-    for state in session.query(State).order_by(State.id):
-        if 'a' in state.name:
-            print('{}: {}'.format(state.id, state.name))
+    for instance in session.query(State).filter(State.name.contains('a')):
+        print('{0}: {1}'.format(instance.id, instance.name))
