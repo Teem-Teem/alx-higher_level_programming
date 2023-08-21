@@ -9,22 +9,24 @@ This script is safe from MySQL injections!
 
 if __name__ == '__main__':
 
-    db_user = argv[1]
-    db_passwd = argv[2]
-    db_name = argv[3]
-    search = '{}'.format(argv[4])
+    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
+                         passwd=argv[2], db=argv[3])
 
-    database = MySQLdb.connect(host='localhost',
-                               port=3306,
-                               user=argv[1],
-                               passwd=argv[2],
-                               db=argv[3])
+    with db.cursor() as cur:
+        cur.execute("""
+             SELECT
+                 *
+             FROM
+                 states
+             WHERE
+                 name LIKE BINARY %(name)s
+             ORDER BY
+                 states.id ASC
+         """, {
+             'name': argv[4]
+         })
 
-    cursor = database.cursor()
-
-    cursor.execute("SELECT id, name FROM states\
-                   WHERE name = %s\
-                   ORDER BY states.id ASC;", (search,))
-
-    for row in cursor.fetchall():
-        print(row)
+         rows = cur.fetchall()
+    if row is not None:
+        for row in rows:
+            prit(row)
